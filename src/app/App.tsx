@@ -46,10 +46,24 @@ const staggerContainer = {
 
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      
+      const sections = ["hero", "features", "architecture", "dashboard", "about"];
+      let current = "hero";
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 300 && rect.bottom >= 300) {
+            current = section;
+          }
+        }
+      }
+      setActiveSection(current);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -68,22 +82,18 @@ export default function App() {
             />
           </div>
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <a href="#about" className="hover:text-primary transition-colors">Về Y Nhãn</a>
-            <a href="#features" className="hover:text-primary transition-colors">Tính năng</a>
-            <a href="#architecture" className="hover:text-primary transition-colors">Kiến trúc AI</a>
-            <a href="#dashboard" className="hover:text-primary transition-colors">Sản Phẩm</a>
-          </div>
-          <div className="flex items-center gap-4">
-            <button className="bg-primary text-primary-foreground px-5 py-2.5 rounded-full text-sm font-medium hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5">
-              Liên hệ
-            </button>
+            <a href="#hero" className={`hover:text-primary transition-colors ${activeSection === 'hero' ? 'text-primary font-bold' : ''}`}>Về Y Nhãn</a>
+            <a href="#features" className={`hover:text-primary transition-colors ${activeSection === 'features' ? 'text-primary font-bold' : ''}`}>Tính năng</a>
+            <a href="#architecture" className={`hover:text-primary transition-colors ${activeSection === 'architecture' ? 'text-primary font-bold' : ''}`}>Kiến trúc AI</a>
+            <a href="#dashboard" className={`hover:text-primary transition-colors ${activeSection === 'dashboard' ? 'text-primary font-bold' : ''}`}>Sản Phẩm</a>
+            <a href="#about" className={`hover:text-primary transition-colors ${activeSection === 'about' ? 'text-primary font-bold' : ''}`}>Liên hệ</a>
           </div>
         </div>
       </nav>
 
       <main>
         {/* Hero Section */}
-        <section className="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+        <section id="hero" className="relative pt-40 pb-20 md:pt-48 md:pb-32 overflow-hidden">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#F7FBFF] via-white to-white"></div>
           {/* Soft glowing orbs */}
           <div className="absolute top-20 left-1/4 w-96 h-96 bg-[#2A7FFF]/5 rounded-full blur-3xl pointer-events-none"></div>
@@ -113,12 +123,12 @@ export default function App() {
                 </motion.p>
                 
                 <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center gap-2">
+                  <a href="#architecture" className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center gap-2">
                     Tìm hiểu dự án <ArrowRight className="w-5 h-5" />
-                  </button>
-                  <button className="bg-white text-foreground border border-border px-8 py-4 rounded-full font-medium hover:bg-muted transition-colors flex items-center justify-center">
+                  </a>
+                  <a href="#about" className="bg-white text-foreground border border-border px-8 py-4 rounded-full font-medium hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center">
                     Liên hệ hợp tác
-                  </button>
+                  </a>
                 </motion.div>
               </motion.div>
               
