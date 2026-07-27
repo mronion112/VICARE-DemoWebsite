@@ -1,0 +1,56 @@
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-ring: var(--ring);
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-heading: 'Manrope', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  --background: #FFFFFF;
+  --foreground: #24324B;
+  --card: #FFFFFF;
+  --card-foreground: #24324B;
+  --primary: #2A7FFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F7FBFF;
+  --secondary-foreground: #2A7FFF;
+  --muted: #F5F7FA;
+  --muted-foreground: #6B7280;
+  --accent: #F2FCFF;
+  --accent-foreground: #2A7FFF;
+  --border: #E5E7EB; /* Subtle */
+  --ring: #5AAEFF;
+  --radius: 1.5rem;
+}
+
+.dark {
+  /* The brief explicitly asked for NO dark theme. Keeping it light. */
+  --background: #FFFFFF;
+  --foreground: #24324B;
+  --card: #FFFFFF;
+  --card-foreground: #24324B;
+  --primary: #2A7FFF;
+  --primary-foreground: #FFFFFF;
+  --secondary: #F7FBFF;
+  --secondary-foreground: #2A7FFF;
+  --muted: #F5F7FA;
+  --muted-foreground: #6B7280;
+  --accent: #F2FCFF;
+  --accent-foreground: #2A7FFF;
+  --border: #E5E7EB;
+  --ring: #5AAEFF;
+  --radius: 1.5rem;
+}
