@@ -27,6 +27,14 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import logoImage from "@/imports/image.png";
 import heroImage from "@/imports/_nh1.png";
 import dashboardImage from "@/imports/Gemini_Generated_Image_wsanfwwsanfwwsan.png";
+import vnTranslations from "./vn.json";
+import engTranslations from "./eng.json";
+
+// Language dictionary - add more locales here later by dropping in a new json file
+const TRANSLATIONS = {
+  vn: vnTranslations,
+  eng: engTranslations,
+};
 
 // Subtle animation variants
 const fadeInUp = {
@@ -47,6 +55,9 @@ const staggerContainer = {
 export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const [language, setLanguage] = useState("vn"); // "vn" | "eng"
+
+  const t = TRANSLATIONS[language];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,20 +84,43 @@ export default function App() {
     <div className="min-h-screen bg-background text-foreground font-sans selection:bg-primary/20 selection:text-primary">
       {/* Navigation */}
       <nav className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-xl border-b border-border/50 py-3' : 'bg-transparent py-5'}`}>
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-          <div className="flex items-center gap-2">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-[1fr_auto_1fr] items-center gap-4">
+          {/* Logo - left */}
+          <div className="flex items-center gap-2 justify-self-start">
             <ImageWithFallback 
               src={logoImage} 
               alt="VICARE Y Nhãn Logo" 
               className="h-10 w-auto object-contain"
             />
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
-            <a href="#hero" className={`hover:text-primary transition-colors ${activeSection === 'hero' ? 'text-primary font-bold' : ''}`}>Về Y Nhãn</a>
-            <a href="#features" className={`hover:text-primary transition-colors ${activeSection === 'features' ? 'text-primary font-bold' : ''}`}>Tính năng</a>
-            <a href="#architecture" className={`hover:text-primary transition-colors ${activeSection === 'architecture' ? 'text-primary font-bold' : ''}`}>Kiến trúc AI</a>
-            <a href="#dashboard" className={`hover:text-primary transition-colors ${activeSection === 'dashboard' ? 'text-primary font-bold' : ''}`}>Sản Phẩm</a>
-            <a href="#about" className={`hover:text-primary transition-colors ${activeSection === 'about' ? 'text-primary font-bold' : ''}`}>Liên hệ</a>
+
+          {/* Menu - centered */}
+          <div className="hidden md:flex items-center justify-center gap-8 text-sm font-medium text-muted-foreground">
+            <a href="#hero" className={`hover:text-primary transition-colors ${activeSection === 'hero' ? 'text-primary font-bold' : ''}`}>{t.nav.about}</a>
+            <a href="#features" className={`hover:text-primary transition-colors ${activeSection === 'features' ? 'text-primary font-bold' : ''}`}>{t.nav.features}</a>
+            <a href="#architecture" className={`hover:text-primary transition-colors ${activeSection === 'architecture' ? 'text-primary font-bold' : ''}`}>{t.nav.architecture}</a>
+            <a href="#dashboard" className={`hover:text-primary transition-colors ${activeSection === 'dashboard' ? 'text-primary font-bold' : ''}`}>{t.nav.product}</a>
+            <a href="#about" className={`hover:text-primary transition-colors ${activeSection === 'about' ? 'text-primary font-bold' : ''}`}>{t.nav.contact}</a>
+          </div>
+
+          {/* Language toggle - right */}
+          <div className="flex items-center justify-self-end">
+            <div className="flex items-center gap-1 bg-secondary/60 rounded-full p-1 border border-primary/10">
+              <button
+                onClick={() => setLanguage("vn")}
+                aria-pressed={language === "vn"}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${language === "vn" ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:text-primary"}`}
+              >
+                {t.languageToggle.vn}
+              </button>
+              <button
+                onClick={() => setLanguage("eng")}
+                aria-pressed={language === "eng"}
+                className={`px-3 py-1.5 rounded-full text-xs font-semibold transition-all ${language === "eng" ? "bg-primary text-white shadow-sm" : "text-muted-foreground hover:text-primary"}`}
+              >
+                {t.languageToggle.eng}
+              </button>
+            </div>
           </div>
         </div>
       </nav>
@@ -109,25 +143,25 @@ export default function App() {
               >
                 <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-secondary text-primary text-sm font-medium mb-6 border border-primary/10">
                   <Activity className="w-4 h-4" />
-                  <span>Dự án AI chăm sóc sức khỏe của VICARE</span>
+                  <span>{t.hero.badge}</span>
                 </motion.div>
                 
                 <motion.h1 variants={fadeInUp} className="text-5xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-[1.1] mb-6 tracking-tight">
-                  <span className="block text-primary">Y Nhãn</span>
-                  Công nghệ y tế của người Việt
+                  <span className="block text-primary">{t.hero.titleAccent}</span>
+                  {t.hero.titleRest}
                 </motion.h1>
                 
                 <motion.p variants={fadeInUp} className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-                  "Trao ngành Y thêm một đôi Nhãn, trao người bệnh thêm một chữ An."<br/><br/>
-                  Y Nhãn là "đôi mắt AI" hỗ trợ bệnh viện quan sát bệnh nhân không tiếp xúc liên tục, phát hiện sớm rủi ro và nâng cao an toàn điều trị.
+                  {t.hero.descriptionLine1}<br/><br/>
+                  {t.hero.descriptionLine2}
                 </motion.p>
                 
                 <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4">
                   <a href="#architecture" className="bg-primary text-primary-foreground px-8 py-4 rounded-full font-medium hover:bg-primary/90 transition-all shadow-xl shadow-primary/25 hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center gap-2">
-                    Tìm hiểu dự án <ArrowRight className="w-5 h-5" />
+                    {t.hero.ctaPrimary} <ArrowRight className="w-5 h-5" />
                   </a>
                   <a href="#about" className="bg-white text-foreground border border-border px-8 py-4 rounded-full font-medium hover:bg-primary hover:text-white hover:border-primary transition-all shadow-sm hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5 flex items-center justify-center">
-                    Liên hệ hợp tác
+                    {t.hero.ctaSecondary}
                   </a>
                 </motion.div>
               </motion.div>
@@ -143,7 +177,7 @@ export default function App() {
                   <div className="absolute inset-0 bg-[#F5F7FA]">
                     <ImageWithFallback 
                       src={heroImage} 
-                      alt="Bác sĩ ân cần chăm sóc bệnh nhân trên giường bệnh"
+                      alt={t.hero.heroImageAlt}
                       className="w-full h-full object-cover object-center opacity-90"
                     />
                     {/* Subtle Gradient Overlays */}
@@ -159,19 +193,19 @@ export default function App() {
         <section id="features" className="py-24 bg-white relative">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Bài toán của ngành Y</h2>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">{t.problem.title}</h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Bác sĩ không thể ở bên mọi bệnh nhân 24/7. Nhưng AI có thể luôn quan sát. Y Nhãn không thay thế bác sĩ mà trở thành đôi mắt công nghệ đồng hành, giúp phát hiện sớm rủi ro, giảm áp lực chăm sóc.
+                {t.problem.description}
               </p>
             </div>
             
             <div className="grid md:grid-cols-3 lg:grid-cols-5 gap-6">
               {[
-                { icon: AlertTriangle, title: "Phát hiện sớm rủi ro", color: "from-[#FFF0F0] to-white", iconColor: "text-[#FF5A5A]" },
-                { icon: Clock, title: "Giảm áp lực chăm sóc", color: "from-[#F2FCFF] to-white", iconColor: "text-[#3ED7D5]" },
-                { icon: Eye, title: "Theo dõi liên tục", color: "from-[#F7FBFF] to-white", iconColor: "text-[#2A7FFF]" },
-                { icon: ShieldCheck, title: "Nâng cao an toàn", color: "from-[#F0FDF4] to-white", iconColor: "text-[#22C55E]" },
-                { icon: HeartPulse, title: "Mang lại sự an tâm", color: "from-[#FAF5FF] to-white", iconColor: "text-[#A855F7]" },
+                { icon: AlertTriangle, title: t.problem.cards[0], color: "from-[#FFF0F0] to-white", iconColor: "text-[#FF5A5A]" },
+                { icon: Clock, title: t.problem.cards[1], color: "from-[#F2FCFF] to-white", iconColor: "text-[#3ED7D5]" },
+                { icon: Eye, title: t.problem.cards[2], color: "from-[#F7FBFF] to-white", iconColor: "text-[#2A7FFF]" },
+                { icon: ShieldCheck, title: t.problem.cards[3], color: "from-[#F0FDF4] to-white", iconColor: "text-[#22C55E]" },
+                { icon: HeartPulse, title: t.problem.cards[4], color: "from-[#FAF5FF] to-white", iconColor: "text-[#A855F7]" },
               ].map((item, i) => (
                 <motion.div 
                   key={i}
@@ -196,19 +230,19 @@ export default function App() {
         <section id="architecture" className="py-24 bg-[#F7FBFF] relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6">
             <div className="text-center mb-16">
-              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">Kiến trúc hệ thống AI</h2>
-              <p className="text-lg text-muted-foreground">Mô hình phân tích dữ liệu hình ảnh tiên tiến với độ chính xác cao.</p>
+              <h2 className="text-3xl md:text-4xl font-heading font-bold mb-6">{t.architecture.title}</h2>
+              <p className="text-lg text-muted-foreground">{t.architecture.description}</p>
             </div>
 
             {/* Models Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
               {[
-                { title: "Person Detection", desc: "Nhận diện người trong phòng", icon: User },
-                { title: "Pose Estimation", desc: "Phân tích tư thế 3D", icon: ActivitySquare },
-                { title: "Action Recognition", desc: "Nhận diện hành động", icon: BrainCircuit },
-                { title: "Fall Detection", desc: "Phát hiện té ngã tức thì", icon: AlertTriangle },
-                { title: "Respiration Analysis", desc: "Đo nhịp thở qua video", icon: Wind },
-                { title: "Heat Detection", desc: "Phân tích nhiệt độ", icon: Thermometer },
+                { ...t.architecture.models[0], icon: User },
+                { ...t.architecture.models[1], icon: ActivitySquare },
+                { ...t.architecture.models[2], icon: BrainCircuit },
+                { ...t.architecture.models[3], icon: AlertTriangle },
+                { ...t.architecture.models[4], icon: Wind },
+                { ...t.architecture.models[5], icon: Thermometer },
               ].map((model, i) => (
                 <motion.div 
                   key={i}
@@ -240,14 +274,14 @@ export default function App() {
                   <div className="p-4 border-b border-border flex justify-between items-center bg-white/50 backdrop-blur-sm">
                     <div className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
-                      <span className="font-mono text-sm font-medium">CAM-ICU-04</span>
+                      <span className="font-mono text-sm font-medium">{t.dashboard.camLabel}</span>
                     </div>
-                    <div className="text-xs text-muted-foreground font-mono">LIVE • 1080p • 60FPS</div>
+                    <div className="text-xs text-muted-foreground font-mono">{t.dashboard.liveStatus}</div>
                   </div>
                   <div className="relative aspect-video bg-zinc-100 overflow-hidden">
                     <ImageWithFallback 
                       src={dashboardImage} 
-                      alt="Góc camera bệnh nhân đang nằm trên giường ốm"
+                      alt={t.dashboard.dashboardImageAlt}
                       className="w-full h-full object-cover object-center scale-[1.05] origin-top-left"
                     />
                     {/* Pose Estimation Overlay Graphic */}
@@ -266,10 +300,10 @@ export default function App() {
                     </svg>
                     <div className="absolute bottom-4 left-4 flex gap-2">
                       <div className="px-3 py-1 bg-black/50 backdrop-blur-md rounded text-white text-xs font-mono">
-                        Person 99%
+                        {t.dashboard.personBadge}
                       </div>
                       <div className="px-3 py-1 bg-black/50 backdrop-blur-md rounded text-white text-xs font-mono">
-                        Seizure Warning
+                        {t.dashboard.seizureWarning}
                       </div>
                     </div>
                   </div>
@@ -288,64 +322,64 @@ export default function App() {
                         <Bell className="w-5 h-5 animate-pulse" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-red-600 tracking-wide">CẢNH BÁO KHẨN</h3>
-                        <p className="text-xs text-muted-foreground font-mono">14:02:45 • Vừa xong</p>
+                        <h3 className="font-bold text-red-600 tracking-wide">{t.dashboard.alertTitle}</h3>
+                        <p className="text-xs text-muted-foreground font-mono">{t.dashboard.alertTime}</p>
                       </div>
                     </div>
 
                     <div className="space-y-4 mb-6">
                       <div className="bg-red-50 p-4 rounded-xl border border-red-100 text-red-800 text-sm font-medium">
-                        Có dấu hiệu co giật và căng cứng cơ.
+                        {t.dashboard.alertMessage}
                       </div>
                       
                       <div className="grid grid-cols-2 gap-4">
                         <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Bệnh nhân</p>
-                          <p className="font-semibold text-sm">Phạm Văn A</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{t.dashboard.patientLabel}</p>
+                          <p className="font-semibold text-sm">{t.dashboard.patientName}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Vị trí</p>
-                          <p className="font-semibold text-sm">Giường X</p>
-                          <p className="text-xs text-muted-foreground">Phòng Y • Tòa Z</p>
+                          <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{t.dashboard.locationLabel}</p>
+                          <p className="font-semibold text-sm">{t.dashboard.bedValue}</p>
+                          <p className="text-xs text-muted-foreground">{t.dashboard.roomValue}</p>
                         </div>
                       </div>
 
                       <div className="pt-4 border-t border-red-100/50">
-                        <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider mb-2">Nhân Khẩu Học</p>
+                        <p className="text-[10px] text-muted-foreground font-semibold uppercase tracking-wider mb-2">{t.dashboard.demographicsLabel}</p>
                         <div className="grid grid-cols-4 gap-2">
                           <div>
-                            <p className="text-xs text-muted-foreground mb-1">Tuổi</p>
-                            <p className="font-medium text-sm">65</p>
+                            <p className="text-xs text-muted-foreground mb-1">{t.dashboard.ageLabel}</p>
+                            <p className="font-medium text-sm">{t.dashboard.ageValue}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-muted-foreground mb-1">Giới</p>
-                            <p className="font-medium text-sm">Nam</p>
+                            <p className="text-xs text-muted-foreground mb-1">{t.dashboard.genderLabel}</p>
+                            <p className="font-medium text-sm">{t.dashboard.genderValue}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-muted-foreground mb-1">Cao</p>
-                            <p className="font-medium text-sm">165cm</p>
+                            <p className="text-xs text-muted-foreground mb-1">{t.dashboard.heightLabel}</p>
+                            <p className="font-medium text-sm">{t.dashboard.heightValue}</p>
                           </div>
                           <div>
-                            <p className="text-xs text-muted-foreground mb-1">Nặng</p>
-                            <p className="font-medium text-sm">68kg</p>
+                            <p className="text-xs text-muted-foreground mb-1">{t.dashboard.weightLabel}</p>
+                            <p className="font-medium text-sm">{t.dashboard.weightValue}</p>
                           </div>
                         </div>
                       </div>
 
                       <div className="pt-4 border-t border-red-100/50 grid grid-cols-2 gap-4">
                         <div>
-                          <p className="text-xs text-muted-foreground mb-1">Nhịp thở</p>
-                          <p className="font-mono font-medium text-red-600">10 /min</p>
+                          <p className="text-xs text-muted-foreground mb-1">{t.dashboard.respirationLabel}</p>
+                          <p className="font-mono font-medium text-red-600">{t.dashboard.respirationValue}</p>
                         </div>
                         <div>
-                          <p className="text-xs text-muted-foreground mb-1">Nhiệt độ</p>
-                          <p className="font-mono font-medium text-orange-500">40.0°C</p>
+                          <p className="text-xs text-muted-foreground mb-1">{t.dashboard.temperatureLabel}</p>
+                          <p className="font-mono font-medium text-orange-500">{t.dashboard.temperatureValue}</p>
                         </div>
                       </div>
                     </div>
 
                     <button className="w-full bg-red-500 hover:bg-red-600 text-white font-medium py-3 rounded-xl transition-colors flex items-center justify-center gap-2 shadow-lg shadow-red-500/20">
-                      <Stethoscope className="w-4 h-4" /> Báo cáo Điều dưỡng
+                      <Stethoscope className="w-4 h-4" /> {t.dashboard.reportButton}
                     </button>
                   </motion.div>
                 </div>
@@ -361,11 +395,11 @@ export default function App() {
             
             <div>
               <div className="mb-8">
-                <h2 className="text-4xl font-heading font-bold mb-2">VICARE</h2>
-                <h3 className="text-xl text-primary font-medium">Vietnam Intelligent Care</h3>
+                <h2 className="text-4xl font-heading font-bold mb-2">{t.about.companyName}</h2>
+                <h3 className="text-xl text-primary font-medium">{t.about.tagline}</h3>
               </div>
               <p className="text-xl text-muted-foreground leading-relaxed mb-8">
-                Công nghệ y tế của người Việt, vì người Việt. VICARE phát triển các giải pháp AI nhằm nâng cao chất lượng chăm sóc sức khỏe và hỗ trợ đội ngũ y tế bằng công nghệ trí tuệ nhân tạo.
+                {t.about.description}
               </p>
               
               <div className="flex gap-4">
@@ -382,7 +416,7 @@ export default function App() {
             </div>
 
             <div className="bg-[#F7FBFF] p-8 md:p-12 rounded-[2.5rem] border border-primary/10">
-              <h3 className="text-2xl font-bold mb-8">Liên hệ với chúng tôi</h3>
+              <h3 className="text-2xl font-bold mb-8">{t.about.contactTitle}</h3>
               
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
@@ -390,8 +424,8 @@ export default function App() {
                     <Phone className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Hotline</p>
-                    <p className="text-xl font-semibold">081 743 1106</p>
+                    <p className="text-sm text-muted-foreground mb-1">{t.about.hotlineLabel}</p>
+                    <p className="text-xl font-semibold">{t.about.hotlineValue}</p>
                   </div>
                 </div>
                 
@@ -400,8 +434,8 @@ export default function App() {
                     <Mail className="w-6 h-6" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">Email</p>
-                    <p className="text-xl font-semibold">tttanh.0311@gmail.com</p>
+                    <p className="text-sm text-muted-foreground mb-1">{t.about.emailLabel}</p>
+                    <p className="text-xl font-semibold">{t.about.emailValue}</p>
                   </div>
                 </div>
               </div>
@@ -423,7 +457,7 @@ export default function App() {
             />
           </div>
           <p className="text-sm text-muted-foreground text-center">
-            © 2026 VICARE.COM.VN. Bảo lưu mọi quyền.
+            {t.footer.copyright}
           </p>
         </div>
       </footer>

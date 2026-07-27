@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "about": "Về Y Nhãn",
+    "features": "Tính năng",
+    "architecture": "Kiến trúc AI",
+    "product": "Sản Phẩm",
+    "contact": "Liên hệ"
+  },
+  "hero": {
+    "badge": "Dự án AI chăm sóc sức khỏe của VICARE",
+    "titleAccent": "Y Nhãn",
+    "titleRest": "Công nghệ y tế của người Việt",
+    "descriptionLine1": "\"Trao ngành Y thêm một đôi Nhãn, trao người bệnh thêm một chữ An.\"",
+    "descriptionLine2": "Y Nhãn là \"đôi mắt AI\" hỗ trợ bệnh viện quan sát bệnh nhân không tiếp xúc liên tục, phát hiện sớm rủi ro và nâng cao an toàn điều trị.",
+    "ctaPrimary": "Tìm hiểu dự án",
+    "ctaSecondary": "Liên hệ hợp tác",
+    "heroImageAlt": "Bác sĩ ân cần chăm sóc bệnh nhân trên giường bệnh"
+  },
+  "problem": {
+    "title": "Bài toán của ngành Y",
+    "description": "Bác sĩ không thể ở bên mọi bệnh nhân 24/7. Nhưng AI có thể luôn quan sát. Y Nhãn không thay thế bác sĩ mà trở thành đôi mắt công nghệ đồng hành, giúp phát hiện sớm rủi ro, giảm áp lực chăm sóc.",
+    "cards": [
+      "Phát hiện sớm rủi ro",
+      "Giảm áp lực chăm sóc",
+      "Theo dõi liên tục",
+      "Nâng cao an toàn",
+      "Mang lại sự an tâm"
+    ]
+  },
+  "architecture": {
+    "title": "Kiến trúc hệ thống AI",
+    "description": "Mô hình phân tích dữ liệu hình ảnh tiên tiến với độ chính xác cao.",
+    "models": [
+      { "title": "Person Detection", "desc": "Nhận diện người trong phòng" },
+      { "title": "Pose Estimation", "desc": "Phân tích tư thế 3D" },
+      { "title": "Action Recognition", "desc": "Nhận diện hành động" },
+      { "title": "Fall Detection", "desc": "Phát hiện té ngã tức thì" },
+      { "title": "Respiration Analysis", "desc": "Đo nhịp thở qua video" },
+      { "title": "Heat Detection", "desc": "Phân tích nhiệt độ" }
+    ]
+  },
+  "dashboard": {
+    "camLabel": "CAM-ICU-04",
+    "liveStatus": "LIVE • 1080p • 60FPS",
+    "dashboardImageAlt": "Góc camera bệnh nhân đang nằm trên giường ốm",
+    "personBadge": "Person 99%",
+    "seizureWarning": "Cảnh báo Co giật",
+    "alertTitle": "CẢNH BÁO KHẨN",
+    "alertTime": "14:02:45 • Vừa xong",
+    "alertMessage": "Có dấu hiệu co giật và căng cứng cơ.",
+    "patientLabel": "Bệnh nhân",
+    "patientName": "Phạm Văn A",
+    "locationLabel": "Vị trí",
+    "bedValue": "Giường X",
+    "roomValue": "Phòng Y • Tòa Z",
+    "demographicsLabel": "Nhân Khẩu Học",
+    "ageLabel": "Tuổi",
+    "ageValue": "65",
+    "genderLabel": "Giới",
+    "genderValue": "Nam",
+    "heightLabel": "Cao",
+    "heightValue": "165cm",
+    "weightLabel": "Nặng",
+    "weightValue": "68kg",
+    "respirationLabel": "Nhịp thở",
+    "respirationValue": "10 /min",
+    "temperatureLabel": "Nhiệt độ",
+    "temperatureValue": "40.0°C",
+    "reportButton": "Báo cáo Điều dưỡng"
+  },
+  "about": {
+    "companyName": "VICARE",
+    "tagline": "Vietnam Intelligent Care",
+    "description": "Công nghệ y tế của người Việt, vì người Việt. VICARE phát triển các giải pháp AI nhằm nâng cao chất lượng chăm sóc sức khỏe và hỗ trợ đội ngũ y tế bằng công nghệ trí tuệ nhân tạo.",
+    "contactTitle": "Liên hệ với chúng tôi",
+    "hotlineLabel": "Hotline",
+    "hotlineValue": "081 743 1106",
+    "emailLabel": "Email",
+    "emailValue": "tttanh.0311@gmail.com"
+  },
+  "footer": {
+    "copyright": "© 2026 VICARE.COM.VN. Bảo lưu mọi quyền."
+  },
+  "languageToggle": {
+    "vn": "VN",
+    "eng": "ENG"
+  }
+}

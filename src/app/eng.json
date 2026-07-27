@@ -1,0 +1,88 @@
+{
+  "nav": {
+    "about": "About Y Nhãn",
+    "features": "Features",
+    "architecture": "AI Architecture",
+    "product": "Product",
+    "contact": "Contact"
+  },
+  "hero": {
+    "badge": "VICARE's AI Healthcare Project",
+    "titleAccent": "Y Nhãn",
+    "titleRest": "Vietnamese Healthcare Technology",
+    "descriptionLine1": "\"Giving medicine an extra pair of Eyes, giving patients an extra layer of Safety.\"",
+    "descriptionLine2": "Y Nhãn is an \"AI pair of eyes\" that helps hospitals continuously observe patients without physical contact, detecting risks early and improving treatment safety.",
+    "ctaPrimary": "Explore the project",
+    "ctaSecondary": "Get in touch",
+    "heroImageAlt": "A doctor caringly attending to a patient in a hospital bed"
+  },
+  "problem": {
+    "title": "The Challenge in Healthcare",
+    "description": "Doctors can't be with every patient 24/7. But AI can always be watching. Y Nhãn doesn't replace doctors — it becomes a technological companion, helping detect risks early and reduce caregiving pressure.",
+    "cards": [
+      "Early risk detection",
+      "Reduced caregiving pressure",
+      "Continuous monitoring",
+      "Improved safety",
+      "Greater peace of mind"
+    ]
+  },
+  "architecture": {
+    "title": "AI System Architecture",
+    "description": "An advanced image data analysis model with high accuracy.",
+    "models": [
+      { "title": "Person Detection", "desc": "Detects people in the room" },
+      { "title": "Pose Estimation", "desc": "3D posture analysis" },
+      { "title": "Action Recognition", "desc": "Recognizes actions" },
+      { "title": "Fall Detection", "desc": "Instant fall detection" },
+      { "title": "Respiration Analysis", "desc": "Measures breathing via video" },
+      { "title": "Heat Detection", "desc": "Temperature analysis" }
+    ]
+  },
+  "dashboard": {
+    "camLabel": "CAM-ICU-04",
+    "liveStatus": "LIVE • 1080p • 60FPS",
+    "dashboardImageAlt": "Camera angle of a patient lying in a hospital bed",
+    "personBadge": "Person 99%",
+    "seizureWarning": "Seizure Warning",
+    "alertTitle": "URGENT ALERT",
+    "alertTime": "14:02:45 • Just now",
+    "alertMessage": "Signs of seizure and muscle rigidity detected.",
+    "patientLabel": "Patient",
+    "patientName": "Pham Van A",
+    "locationLabel": "Location",
+    "bedValue": "Bed X",
+    "roomValue": "Room Y • Building Z",
+    "demographicsLabel": "Demographics",
+    "ageLabel": "Age",
+    "ageValue": "65",
+    "genderLabel": "Gender",
+    "genderValue": "Male",
+    "heightLabel": "Height",
+    "heightValue": "165cm",
+    "weightLabel": "Weight",
+    "weightValue": "68kg",
+    "respirationLabel": "Respiration",
+    "respirationValue": "10 /min",
+    "temperatureLabel": "Temperature",
+    "temperatureValue": "40.0°C",
+    "reportButton": "Report to Nursing"
+  },
+  "about": {
+    "companyName": "VICARE",
+    "tagline": "Vietnam Intelligent Care",
+    "description": "Vietnamese healthcare technology, made for the Vietnamese people. VICARE develops AI solutions to improve healthcare quality and support medical staff through artificial intelligence.",
+    "contactTitle": "Get in touch",
+    "hotlineLabel": "Hotline",
+    "hotlineValue": "081 743 1106",
+    "emailLabel": "Email",
+    "emailValue": "tttanh.0311@gmail.com"
+  },
+  "footer": {
+    "copyright": "© 2026 VICARE.COM.VN. All rights reserved."
+  },
+  "languageToggle": {
+    "vn": "VN",
+    "eng": "ENG"
+  }
+}
