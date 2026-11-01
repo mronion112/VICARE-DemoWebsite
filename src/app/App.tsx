@@ -24,7 +24,6 @@ import {
   AlertTriangle
 } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import logoImage from "../../LogoVICARE.jpg";
 import heroImage from "@/imports/_nh1.png";
 import dashboardImage from "@/imports/Gemini_Generated_Image_wsanfwwsanfwwsan.png";
 import vnTranslations from "./vn.json";
@@ -35,6 +34,7 @@ const TRANSLATIONS = {
   vn: vnTranslations,
   eng: engTranslations,
 };
+const logoImage = "/LogoVICARE-transparent.png";
 
 // Subtle animation variants
 const fadeInUp = {
@@ -90,7 +90,7 @@ export default function App() {
             <ImageWithFallback 
               src={logoImage} 
               alt="VICARE Y Nhãn Logo" 
-              className="h-12 w-24 object-cover object-center"
+              className="h-12 w-24 object-contain"
             />
           </div>
 
@@ -518,7 +518,7 @@ export default function App() {
             <ImageWithFallback 
               src={logoImage} 
               alt="VICARE" 
-              className="h-10 w-20 object-cover object-center"
+              className="h-10 w-20 object-contain"
             />
           </div>
           <p className="text-sm text-muted-foreground text-center">
