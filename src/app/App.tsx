@@ -24,7 +24,7 @@ import {
   AlertTriangle
 } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
-import logoImage from "@/imports/image.png";
+import logoImage from "../../LogoVICARE.jpg";
 import heroImage from "@/imports/_nh1.png";
 import dashboardImage from "@/imports/Gemini_Generated_Image_wsanfwwsanfwwsan.png";
 import vnTranslations from "./vn.json";
@@ -90,7 +90,7 @@ export default function App() {
             <ImageWithFallback 
               src={logoImage} 
               alt="VICARE Y Nhãn Logo" 
-              className="h-10 w-auto object-contain"
+              className="h-12 w-24 object-cover object-center"
             />
           </div>
 
@@ -235,7 +235,7 @@ export default function App() {
             </div>
 
             {/* Models Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24">
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
               {[
                 { ...t.architecture.models[0], icon: User },
                 { ...t.architecture.models[1], icon: ActivitySquare },
@@ -259,6 +259,71 @@ export default function App() {
                   <p className="text-muted-foreground">{model.desc}</p>
                 </motion.div>
               ))}
+            </div>
+
+            <div className="grid lg:grid-cols-3 gap-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white p-8 rounded-3xl border border-border shadow-sm"
+              >
+                <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-5 text-primary">
+                  <Activity className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">{t.architecture.vitalsTitle}</h3>
+                <ul className="space-y-3">
+                  {t.architecture.vitals.map((vital) => (
+                    <li key={vital} className="flex items-center gap-3 text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
+                      {vital}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="bg-white p-8 rounded-3xl border border-border shadow-sm"
+              >
+                <div className="w-12 h-12 bg-[#FFF0F0] rounded-2xl flex items-center justify-center mb-5 text-[#FF5A5A]">
+                  <AlertTriangle className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">{t.architecture.actionsTitle}</h3>
+                <ul className="space-y-3">
+                  {t.architecture.actions.map((action) => (
+                    <li key={action} className="flex items-center gap-3 text-muted-foreground">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A5A]" />
+                      {action}
+                    </li>
+                  ))}
+                </ul>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="bg-white p-8 rounded-3xl border border-border shadow-sm"
+              >
+                <div className="w-12 h-12 bg-[#F0FDF4] rounded-2xl flex items-center justify-center mb-5 text-[#22C55E]">
+                  <ShieldCheck className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">{t.architecture.selfCheckTitle}</h3>
+                <p className="text-muted-foreground leading-relaxed">{t.architecture.selfCheckDescription}</p>
+              </motion.div>
+            </div>
+
+            <div className="mt-6 rounded-3xl bg-primary text-white p-8 md:px-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-xl shadow-primary/15">
+              <div>
+                <p className="text-white/75 text-sm font-semibold uppercase tracking-wider mb-2">{t.architecture.accuracyLabel}</p>
+                <p className="text-white/85">{t.architecture.accuracyDescription}</p>
+              </div>
+              <p className="text-5xl md:text-6xl font-heading font-bold tracking-tight">{t.architecture.accuracyValue}</p>
             </div>
           </div>
         </section>
@@ -303,7 +368,7 @@ export default function App() {
                         {t.dashboard.personBadge}
                       </div>
                       <div className="px-3 py-1 bg-black/50 backdrop-blur-md rounded text-white text-xs font-mono">
-                        {t.dashboard.seizureWarning}
+                        {t.dashboard.fallWarning}
                       </div>
                     </div>
                   </div>
@@ -453,7 +518,7 @@ export default function App() {
             <ImageWithFallback 
               src={logoImage} 
               alt="VICARE" 
-              className="h-6 w-auto object-contain"
+              className="h-10 w-20 object-cover object-center"
             />
           </div>
           <p className="text-sm text-muted-foreground text-center">

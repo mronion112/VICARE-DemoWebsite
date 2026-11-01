@@ -29,7 +29,7 @@
   },
   "architecture": {
     "title": "Kiến trúc hệ thống AI",
-    "description": "Mô hình phân tích dữ liệu hình ảnh tiên tiến với độ chính xác cao.",
+    "description": "Theo dõi dấu hiệu sinh tồn và hành động của người bệnh với AI.",
     "models": [
       { "title": "Person Detection", "desc": "Nhận diện người trong phòng" },
       { "title": "Pose Estimation", "desc": "Phân tích tư thế 3D" },
@@ -37,17 +37,26 @@
       { "title": "Fall Detection", "desc": "Phát hiện té ngã tức thì" },
       { "title": "Respiration Analysis", "desc": "Đo nhịp thở qua video" },
       { "title": "Heat Detection", "desc": "Phân tích nhiệt độ" }
-    ]
+    ],
+    "vitalsTitle": "5 chỉ số theo dõi",
+    "vitals": ["Nhiệt độ", "Nhịp thở", "Nhịp tim", "SpO₂", "Huyết áp"],
+    "actionsTitle": "Phát hiện hành động",
+    "actions": ["Té ngã", "Rời giường"],
+    "selfCheckTitle": "Thuật toán tự kiểm",
+    "selfCheckDescription": "Tự kiểm tra điều kiện giám sát và mức độ che khuất trước khi đưa ra cảnh báo, giúp đảm bảo chất lượng giám sát và hạn chế cảnh báo giả.",
+    "accuracyLabel": "Độ chính xác",
+    "accuracyDescription": "Độ chính xác nhận diện của hệ thống",
+    "accuracyValue": ">98%"
   },
   "dashboard": {
     "camLabel": "CAM-ICU-04",
     "liveStatus": "LIVE • 1080p • 60FPS",
     "dashboardImageAlt": "Góc camera bệnh nhân đang nằm trên giường ốm",
     "personBadge": "Person 99%",
-    "seizureWarning": "Cảnh báo Co giật",
+    "fallWarning": "Cảnh báo té ngã",
     "alertTitle": "CẢNH BÁO KHẨN",
     "alertTime": "14:02:45 • Vừa xong",
-    "alertMessage": "Có dấu hiệu co giật và căng cứng cơ.",
+    "alertMessage": "Phát hiện dấu hiệu té ngã. Vui lòng kiểm tra bệnh nhân.",
     "patientLabel": "Bệnh nhân",
     "patientName": "Phạm Văn A",
     "locationLabel": "Vị trí",

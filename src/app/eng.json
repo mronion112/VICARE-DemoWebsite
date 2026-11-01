@@ -29,7 +29,7 @@
   },
   "architecture": {
     "title": "AI System Architecture",
-    "description": "An advanced image data analysis model with high accuracy.",
+    "description": "AI monitoring of patient vital signs and activity.",
     "models": [
       { "title": "Person Detection", "desc": "Detects people in the room" },
       { "title": "Pose Estimation", "desc": "3D posture analysis" },
@@ -37,17 +37,26 @@
       { "title": "Fall Detection", "desc": "Instant fall detection" },
       { "title": "Respiration Analysis", "desc": "Measures breathing via video" },
       { "title": "Heat Detection", "desc": "Temperature analysis" }
-    ]
+    ],
+    "vitalsTitle": "5 monitored vital signs",
+    "vitals": ["Temperature", "Respiratory rate", "Heart rate", "SpO₂", "Blood pressure"],
+    "actionsTitle": "Activity detection",
+    "actions": ["Falls", "Leaving the bed"],
+    "selfCheckTitle": "Self-check algorithm",
+    "selfCheckDescription": "Checks monitoring conditions and image occlusion before issuing an alert, helping maintain monitoring quality and reduce false alarms.",
+    "accuracyLabel": "Accuracy",
+    "accuracyDescription": "System recognition accuracy",
+    "accuracyValue": ">98%"
   },
   "dashboard": {
     "camLabel": "CAM-ICU-04",
     "liveStatus": "LIVE • 1080p • 60FPS",
     "dashboardImageAlt": "Camera angle of a patient lying in a hospital bed",
     "personBadge": "Person 99%",
-    "seizureWarning": "Seizure Warning",
+    "fallWarning": "Fall Warning",
     "alertTitle": "URGENT ALERT",
     "alertTime": "14:02:45 • Just now",
-    "alertMessage": "Signs of seizure and muscle rigidity detected.",
+    "alertMessage": "Signs of a fall detected. Please check on the patient.",
     "patientLabel": "Patient",
     "patientName": "Pham Van A",
     "locationLabel": "Location",
