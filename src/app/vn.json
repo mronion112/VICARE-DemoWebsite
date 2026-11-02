@@ -30,14 +30,13 @@
   "architecture": {
     "title": "Kiến trúc hệ thống AI",
     "description": "Theo dõi dấu hiệu sinh tồn và hành động của người bệnh với AI.",
+    "modelsLabel": "Mô hình xử lý AI",
     "models": [
       { "title": "Person Detection", "desc": "Nhận diện người trong phòng" },
-      { "title": "Pose Estimation", "desc": "Phân tích tư thế 3D" },
-      { "title": "Action Recognition", "desc": "Nhận diện hành động" },
-      { "title": "Fall Detection", "desc": "Phát hiện té ngã tức thì" },
-      { "title": "Respiration Analysis", "desc": "Đo nhịp thở qua video" },
-      { "title": "Heat Detection", "desc": "Phân tích nhiệt độ" }
+      { "title": "Action Recognition", "desc": "Kết hợp phân tích tư thế với nhận diện hành động" },
+      { "title": "Fall Detection", "desc": "Phát hiện té ngã tức thì" }
     ],
+    "vitalsLabel": "Chỉ số đầu ra",
     "vitalsTitle": "5 chỉ số theo dõi",
     "vitals": ["Nhiệt độ", "Nhịp thở", "Nhịp tim", "SpO₂", "Huyết áp"],
     "actionsTitle": "Phát hiện hành động",

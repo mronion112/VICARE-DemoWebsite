@@ -30,15 +30,14 @@
   "architecture": {
     "title": "AI System Architecture",
     "description": "AI monitoring of patient vital signs and activity.",
+    "modelsLabel": "AI processing models",
     "models": [
       { "title": "Person Detection", "desc": "Detects people in the room" },
-      { "title": "Pose Estimation", "desc": "3D posture analysis" },
-      { "title": "Action Recognition", "desc": "Recognizes actions" },
-      { "title": "Fall Detection", "desc": "Instant fall detection" },
-      { "title": "Respiration Analysis", "desc": "Measures breathing via video" },
-      { "title": "Heat Detection", "desc": "Temperature analysis" }
+      { "title": "Action Recognition", "desc": "Combines pose estimation with action recognition" },
+      { "title": "Fall Detection", "desc": "Instant fall detection" }
     ],
-    "vitalsTitle": "5 monitored vital signs",
+    "vitalsLabel": "Monitored outputs",
+    "vitalsTitle": "5 vital signs",
     "vitals": ["Temperature", "Respiratory rate", "Heart rate", "SpO₂", "Blood pressure"],
     "actionsTitle": "Activity detection",
     "actions": ["Falls", "Leaving the bed"],

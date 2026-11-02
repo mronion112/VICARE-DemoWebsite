@@ -19,9 +19,10 @@ import {
   ChevronDown,
   Wind,
   ScanFace,
-  BrainCircuit,
   ActivitySquare,
-  AlertTriangle
+  AlertTriangle,
+  Droplets,
+  Gauge
 } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import heroImage from "@/imports/_nh1.png";
@@ -34,6 +35,15 @@ const TRANSLATIONS = {
   vn: vnTranslations,
   eng: engTranslations,
 };
+const vitalIcons = [Thermometer, Wind, HeartPulse, Droplets, Gauge];
+const vitalIconColors = [
+  "bg-orange-50 text-orange-600",
+  "bg-teal-50 text-teal-600",
+  "bg-rose-50 text-rose-600",
+  "bg-blue-50 text-blue-600",
+  "bg-violet-50 text-violet-600",
+];
+const modelIcons = [User, ActivitySquare, AlertTriangle];
 const logoImage = "/LogoVICARE-transparent.png";
 
 // Subtle animation variants
@@ -235,87 +245,107 @@ export default function App() {
             </div>
 
             {/* Models Grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-              {[
-                { ...t.architecture.models[0], icon: User },
-                { ...t.architecture.models[1], icon: ActivitySquare },
-                { ...t.architecture.models[2], icon: BrainCircuit },
-                { ...t.architecture.models[3], icon: AlertTriangle },
-                { ...t.architecture.models[4], icon: Wind },
-                { ...t.architecture.models[5], icon: Thermometer },
-              ].map((model, i) => (
-                <motion.div 
-                  key={i}
+            <p className="text-center text-xs font-bold uppercase tracking-[0.18em] text-primary/70 mb-5">
+              {t.architecture.modelsLabel}
+            </p>
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {t.architecture.models.map((model, i) => {
+                const ModelIcon = modelIcons[i];
+
+                return (
+                  <motion.div
+                    key={model.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.1 }}
+                    className="bg-white p-8 rounded-3xl border border-border hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group hover:-translate-y-1"
+                  >
+                    <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                      <ModelIcon className="w-6 h-6" />
+                    </div>
+                    <h3 className="text-xl font-bold mb-3">{model.title}</h3>
+                    <p className="text-muted-foreground">{model.desc}</p>
+                  </motion.div>
+                );
+              })}
+            </div>
+
+            <div className="space-y-6">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white p-5 md:p-7 rounded-[2rem] border border-border shadow-sm"
+              >
+                <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-2 mb-5">
+                  <div>
+                    <p className="text-[11px] font-bold uppercase tracking-[0.17em] text-primary/70 mb-1">
+                      {t.architecture.vitalsLabel}
+                    </p>
+                    <h3 className="text-xl md:text-2xl font-bold">{t.architecture.vitalsTitle}</h3>
+                  </div>
+                  <Activity className="hidden sm:block w-5 h-5 text-primary/50" />
+                </div>
+                <div className="grid grid-cols-2 lg:grid-cols-5 gap-3">
+                  {t.architecture.vitals.map((vital, index) => {
+                    const VitalIcon = vitalIcons[index];
+
+                    return (
+                      <motion.div
+                        key={vital}
+                        initial={{ opacity: 0, y: 12 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: index * 0.06 }}
+                        className="min-h-[76px] flex items-center gap-3 rounded-2xl border border-primary/[0.08] bg-gradient-to-br from-[#F7FBFF] to-white px-3.5 py-3 transition-all duration-300 hover:-translate-y-0.5 hover:border-primary/20 hover:shadow-md hover:shadow-primary/5"
+                      >
+                        <span className={`w-10 h-10 shrink-0 rounded-xl flex items-center justify-center ${vitalIconColors[index]}`}>
+                          <VitalIcon className="w-5 h-5" />
+                        </span>
+                        <span className="text-sm font-semibold leading-snug text-foreground">{vital}</span>
+                      </motion.div>
+                    );
+                  })}
+                </div>
+              </motion.div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-white p-8 rounded-3xl border border-border hover:shadow-xl hover:shadow-primary/5 transition-all duration-300 group hover:-translate-y-1"
+                  transition={{ delay: 0.1 }}
+                  className="bg-white p-8 rounded-3xl border border-border shadow-sm"
                 >
-                  <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                    <model.icon className="w-6 h-6" />
+                  <div className="w-12 h-12 bg-[#FFF0F0] rounded-2xl flex items-center justify-center mb-5 text-[#FF5A5A]">
+                    <AlertTriangle className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold mb-3">{model.title}</h3>
-                  <p className="text-muted-foreground">{model.desc}</p>
+                  <h3 className="text-xl font-bold mb-4">{t.architecture.actionsTitle}</h3>
+                  <ul className="space-y-3">
+                    {t.architecture.actions.map((action) => (
+                      <li key={action} className="flex items-center gap-3 text-muted-foreground">
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A5A]" />
+                        {action}
+                      </li>
+                    ))}
+                  </ul>
                 </motion.div>
-              ))}
-            </div>
 
-            <div className="grid lg:grid-cols-3 gap-6">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 rounded-3xl border border-border shadow-sm"
-              >
-                <div className="w-12 h-12 bg-secondary rounded-2xl flex items-center justify-center mb-5 text-primary">
-                  <Activity className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">{t.architecture.vitalsTitle}</h3>
-                <ul className="space-y-3">
-                  {t.architecture.vitals.map((vital) => (
-                    <li key={vital} className="flex items-center gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      {vital}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-white p-8 rounded-3xl border border-border shadow-sm"
-              >
-                <div className="w-12 h-12 bg-[#FFF0F0] rounded-2xl flex items-center justify-center mb-5 text-[#FF5A5A]">
-                  <AlertTriangle className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">{t.architecture.actionsTitle}</h3>
-                <ul className="space-y-3">
-                  {t.architecture.actions.map((action) => (
-                    <li key={action} className="flex items-center gap-3 text-muted-foreground">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#FF5A5A]" />
-                      {action}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-white p-8 rounded-3xl border border-border shadow-sm"
-              >
-                <div className="w-12 h-12 bg-[#F0FDF4] rounded-2xl flex items-center justify-center mb-5 text-[#22C55E]">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-bold mb-4">{t.architecture.selfCheckTitle}</h3>
-                <p className="text-muted-foreground leading-relaxed">{t.architecture.selfCheckDescription}</p>
-              </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="bg-white p-8 rounded-3xl border border-border shadow-sm"
+                >
+                  <div className="w-12 h-12 bg-[#F0FDF4] rounded-2xl flex items-center justify-center mb-5 text-[#22C55E]">
+                    <ShieldCheck className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4">{t.architecture.selfCheckTitle}</h3>
+                  <p className="text-muted-foreground leading-relaxed">{t.architecture.selfCheckDescription}</p>
+                </motion.div>
+              </div>
             </div>
 
             <div className="mt-6 rounded-3xl bg-primary text-white p-8 md:px-10 flex flex-col md:flex-row md:items-center md:justify-between gap-4 shadow-xl shadow-primary/15">
